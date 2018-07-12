@@ -15,11 +15,10 @@ from linebot.exceptions import (
 from linebot.models import *
 
 app = Flask(__name__)
-config = configparser.ConfigParser()
-config.read("config.ini")
 
-line_bot_api = LineBotApi(config['line_bot']['Channel_Access_Token'])
-handler = WebhookHandler(config['line_bot']['Channel_Secret'])
+line_bot_api = LineBotApi('JMrtslHAQGeBbpL/TZL8kuBtbkF3SYQYHeNFr/Mw+9eAATNEnSV3+6dr7u7N77VQN+BkC175m7TpAKeGVyjp/wRWfUYXN3L91KHVE1zH0ogdGEjSxxbJxhmjl3yqQyWWtI8uUGXEd45Eny8q39SVaAdB04t89/1O/w1cDnyilFU=')   #I put my TOKEN
+handler = WebhookHandler('0ec2d401699e8d20e25f2db75131fc4b')
+
 client_id = config['imgur_api']['Client_ID']
 client_secret = config['imgur_api']['Client_Secret']
 album_id = config['imgur_api']['Album_ID']
