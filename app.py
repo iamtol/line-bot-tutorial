@@ -56,8 +56,8 @@ def technews():
         if index == 5:
             return content
         title = data.text
-        link = data['href']
-        content += '{}\n{}{}\n'.format(title,target_url, link)
+        link = "https://www.blognone.com" + data['href']
+        content += '{}\n{}\n'.format(title, link)
     return content
 
 @handler.add(MessageEvent, message=TextMessage)
