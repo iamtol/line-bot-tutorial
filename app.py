@@ -52,7 +52,7 @@ def technews():
     soup = BeautifulSoup(res.text, 'html.parser')
     content = ""
 
-    for index, data in enumerate(soup.select('article div h1.entry-title a')):
+    for index, data in enumerate(soup.select('div h2 a')):
         if index == 12:
             return content
         title = data.text
@@ -64,7 +64,7 @@ def technews():
 def handle_message(event):
     print("event.reply_token:", event.reply_token)
     print("event.message.text:", event.message.text)
-    if event.message.text == "วิทยาศาสตร์และเทคโนโลยีรายงานใหม่":
+    if event.message.text == "tech":
         content = technews()
         line_bot_api.reply_message(
             event.reply_token,
@@ -80,8 +80,8 @@ def handle_message(event):
                 thumbnail_image_url='https://i.imgur.com/xQF5dZT.jpg',
                 actions=[
                     MessageTemplateAction(
-                        label='ข่าว',
-                        text='ข่าว'
+                        label='เทค',
+                        text='เทค'
                     ),
                     MessageTemplateAction(
                         label='หนัง',
@@ -113,8 +113,8 @@ def handle_message(event):
                         text='ข่าวด่วนของ Apple'
                     ),
                     MessageTemplateAction(
-                        label='วิทยาศาสตร์และเทคโนโลยีรายงานใหม่',
-                        text='วิทยาศาสตร์และเทคโนโลยีรายงานใหม่'
+                        label='เทค',
+                        text='เทค'
                     ),
                     MessageTemplateAction(
                         label='PanX Pan เทคโนโลยี',
