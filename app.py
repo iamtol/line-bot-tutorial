@@ -43,6 +43,15 @@ def callback():
 
     return 'OK'
 
+def pattern_mega(text):
+    patterns = [
+        'mega', 'mg', 'mu', 'ＭＥＧＡ', 'ＭＥ', 'ＭＵ',
+        'ｍｅ', 'ｍｕ', 'ｍｅｇａ', 'GD', 'MG', 'google',
+    ]
+    for pattern in patterns:
+        if re.search(pattern, text, re.IGNORECASE):
+            return True
+        
 def technews():
     target_url = 'https://www.blognone.com/'
     print('Start parsing movie ...')
@@ -71,7 +80,7 @@ def handle_message(event):
             TextSendMessage(text=content))
         return 0
     
-    if event.message.text == "เริ่มเล่น":
+    if event.message.text == "menu":
         buttons_template = TemplateSendMessage(
             alt_text='เริ่มเล่น template',
             template=ButtonsTemplate(
@@ -81,7 +90,7 @@ def handle_message(event):
                 actions=[
                     MessageTemplateAction(
                         label='เทค',
-                        text='เทค'
+                        text='tech'
                     ),
                     MessageTemplateAction(
                         label='หนัง',
