@@ -57,7 +57,7 @@ def technews():
             return content
         title = data.text
         link = "https://www.blognone.com" + data['href']
-        content += '{}\n{}\n'.format(title, link)
+        content += '{}\n{}\n\n'.format(title, link)
     return content
 
 @handler.add(MessageEvent, message=TextMessage)
