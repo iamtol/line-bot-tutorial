@@ -53,11 +53,11 @@ def technews():
     content = ""
 
     for index, data in enumerate(soup.select('div h2 a')):
-        if index == 12:
+        if index == 5:
             return content
         title = data.text
         link = data['href']
-        content += '{}\n{}\n\n'.format(title, link)
+        content += '{}\{}\{}\n\n'.format(title,target_url, link)
     return content
 
 @handler.add(MessageEvent, message=TextMessage)
