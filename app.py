@@ -2,7 +2,7 @@ import requests
 import re
 import random
 import configparser
-import urllib2
+import urllib
 from bs4 import BeautifulSoup
 from flask import Flask, request, abort
 from imgurpython import ImgurClient
@@ -71,7 +71,7 @@ def technews():
     return content
 
 def checkstatus():
-    response = urllib2.urlopen('https://s3-ap-southeast-1.amazonaws.com/mdstatus/md_status/example_j.json')
+    response = urllib.urlopen('https://s3-ap-southeast-1.amazonaws.com/mdstatus/md_status/example_j.json')
     content = response.read()
     return content
 
