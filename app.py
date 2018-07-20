@@ -147,26 +147,6 @@ def handle_message(event):
                     MessageTemplateAction(
                         label='MDCDR803',
                         text='mdcdr803'
-                    ),
-                    MessageTemplateAction(
-                        label='MDCDR804',
-                        text='mdcdr804'
-                    ),
-                    MessageTemplateAction(
-                        label='MDCDR805',
-                        text='mdcdr805'
-                    ),
-                    MessageTemplateAction(
-                        label='MDCDR806',
-                        text='mdcdr806'
-                    ),
-                    MessageTemplateAction(
-                        label='MDCDR807',
-                        text='mdcdr807'
-                    ),
-                    MessageTemplateAction(
-                        label='MDCDR808',
-                        text='mdcdr808'
                     )
                 ]
             )
