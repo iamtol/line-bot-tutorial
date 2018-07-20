@@ -79,6 +79,24 @@ def checkstatus():
     content = res.text
     return content
 
+def checkstatus():
+    target_url = 'https://s3-ap-southeast-1.amazonaws.com/mdstatus/md_status/example_j.json'
+    print('Start parsing web ...')
+    rs = requests.session()
+    res = rs.get(target_url, verify=False)
+    res.encoding = 'utf-8'
+    content = res.text
+    return content
+
+def checknode():
+    target_url = 'https://s3-ap-southeast-1.amazonaws.com/mdstatus/md_status/example_j.json'
+    print('Start parsing web ...')
+    rs = requests.session()
+    res = rs.get(target_url, verify=False)
+    res.encoding = 'utf-8'
+    content = res.text
+    return content
+
 #def checkstatus():
 #    data=urllib2.urlopen("https://s3-ap-southeast-1.amazonaws.com/mdstatus/md_status/example_j.json")
 #    for content in data:
@@ -103,7 +121,14 @@ def handle_message(event):
             TextSendMessage(text=content))
         return 0
     
-    if event.message.text == "menu":
+    if event.message.text == "mdcdr801":
+        content = checknode(mdcdr801)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
+    
+    if event.message.text == "เช็คสถานะเซิฟเวอร์":
         buttons_template = TemplateSendMessage(
             alt_text='menu template',
             template=ButtonsTemplate(
@@ -112,20 +137,36 @@ def handle_message(event):
                 thumbnail_image_url='https://i.imgur.com/xQF5dZT.jpg',
                 actions=[
                     MessageTemplateAction(
-                        label='เทค',
-                        text='tech'
+                        label='MDCDR801',
+                        text='mdcdr801'
                     ),
                     MessageTemplateAction(
-                        label='หนัง',
-                        text='movies'
+                        label='MDCDR802',
+                        text='mdcdr802'
                     ),
                     MessageTemplateAction(
-                        label='สถานะ server',
-                        text='server'
+                        label='MDCDR803',
+                        text='mdcdr803'
                     ),
                     MessageTemplateAction(
-                        label='ข่าวดัง',
-                        text='news'
+                        label='MDCDR804',
+                        text='mdcdr804'
+                    ),
+                    MessageTemplateAction(
+                        label='MDCDR805',
+                        text='mdcdr805'
+                    ),
+                    MessageTemplateAction(
+                        label='MDCDR806',
+                        text='mdcdr806'
+                    ),
+                    MessageTemplateAction(
+                        label='MDCDR807',
+                        text='mdcdr807'
+                    ),
+                    MessageTemplateAction(
+                        label='MDCDR808',
+                        text='mdcdr808'
                     )
                 ]
             )
