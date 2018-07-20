@@ -79,14 +79,6 @@ def checkstatus():
     content = res.text
     return content
 
-def checkstatus():
-    target_url = 'https://s3-ap-southeast-1.amazonaws.com/mdstatus/md_status/example_j.json'
-    print('Start parsing web ...')
-    rs = requests.session()
-    res = rs.get(target_url, verify=False)
-    res.encoding = 'utf-8'
-    content = res.text
-    return content
 
 def checknode():
     target_url = 'https://s3-ap-southeast-1.amazonaws.com/mdstatus/md_status/example_j.json'
@@ -94,7 +86,9 @@ def checknode():
     rs = requests.session()
     res = rs.get(target_url, verify=False)
     res.encoding = 'utf-8'
-    content = res.text
+    data = res.json()
+    json_str = json.dumps(data)
+    content = json.loads(json_str)
     return content
 
 #def checkstatus():
@@ -122,10 +116,31 @@ def handle_message(event):
         return 0
     
     if event.message.text == "mdcdr801":
-        content = checknode(mdcdr801)
+        content = checknode()
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=content))
+            TextSendMessage(text=content[0]))
+        return 0
+    
+     if event.message.text == "mdcdr802":
+        content = checknode()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content[1]))
+        return 0
+    
+    if event.message.text == "mdcdr803":
+        content = checknode()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content[2]))
+        return 0
+    
+    if event.message.text == "mdcdr804":
+        content = checknode()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content[3]))
         return 0
     
     if event.message.text == "เช็คสถานะเซิฟเวอร์":
