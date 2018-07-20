@@ -71,8 +71,12 @@ def technews():
     return content
 
 def checkstatus():
-    response = urllib.urlopen('https://s3-ap-southeast-1.amazonaws.com/mdstatus/md_status/example_j.json')
-    content = response.read()
+    target_url = 'https://s3-ap-southeast-1.amazonaws.com/mdstatus/md_status/example_j.json'
+    print('Start parsing web ...')
+    rs = requests.session()
+    res = rs.get(target_url, verify=False)
+    res.encoding = 'utf-8'
+    content = res.text
     return content
 
 #def checkstatus():
