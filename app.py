@@ -117,7 +117,7 @@ def handle_message(event):
     
     if event.message.text == "mdcdr801":
         status = checknode()
-        content = status[0]
+        content = status['mdcdr801']
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
