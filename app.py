@@ -2,6 +2,7 @@ import requests
 import re
 import random
 import configparser
+import urllib2
 from bs4 import BeautifulSoup
 from flask import Flask, request, abort
 from imgurpython import ImgurClient
@@ -69,6 +70,11 @@ def technews():
         content += '{}\n{}\n\n'.format(title, link)
     return content
 
+def checkstatus():
+    response = urllib2.urlopen('https://s3-ap-southeast-1.amazonaws.com/mdstatus/md_status/example_j.json')
+    content = response.read()
+    return content
+
 #def checkstatus():
 #    data=urllib2.urlopen("https://s3-ap-southeast-1.amazonaws.com/mdstatus/md_status/example_j.json")
 #    for content in data:
@@ -86,12 +92,12 @@ def handle_message(event):
             TextSendMessage(text=content))
         return 0
     
-#    if event.message.text == "server":
-#        content = checkstatus()
-#        line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text=content))
-#        return 0
+    if event.message.text == "server":
+        content = checkstatus()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
     
     if event.message.text == "menu":
         buttons_template = TemplateSendMessage(
