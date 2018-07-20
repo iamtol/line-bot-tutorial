@@ -115,6 +115,13 @@ def handle_message(event):
             TextSendMessage(text=content))
         return 0
     
+    if event.message.text == "contracts":
+        content = checkstatus()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='Pachara Towattanakit : Developer\n'))
+        return 0
+    
     if event.message.text == "mdcdr801":
         status = checknode()
         content = status['mdcdr801']
