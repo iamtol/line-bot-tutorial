@@ -115,12 +115,29 @@ def handle_message(event):
             TextSendMessage(text=content))
         return 0
     
-    if event.message.text == "contracts":
-        content = checkstatus()
+    if event.message.text == "main_cdr":
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text='Pachara Towattanakit : Developer\n'))
+            TextSendMessage(text='Voice\nPatcharaporn Uadglar <patchaud@ais.co.th> : 6586\nAnucha Santana <anuchasa@ais.co.th> : 6707\n\nData\nPachara Towattanakit <somphont@ais.co.th> : 6586\nPatcharaporn Uadglar <patchaud@ais.co.th> : 6586'))
         return 0
+    
+    if event.message.text == "online_bill":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='BOS\nAnucha Santana <anuchasa@ais.co.th> : 6707\nThanawan Katecha <thanawkt@ais.co.th> : 6027\n\nAvatar ans INS\nWarat Thintapthai <warat307@kston.postbox.in.th> : 8533\nPiya Wongharichao <piyawong@ais.co.th>'))
+        return 0    
+    
+    if event.message.text == "hcs_cdr":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='HCS\nThanawan Katecha <thanawkt@ais.co.th> : 6027\n\nCDR Search\nPatcharaporn Uadglar <patchaud@ais.co.th> : 6586'))
+        return 0     
+    
+    if event.message.text == "another":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='Leader\nOngsakorn Treesinchai <ongsakot@ais.co.th> : 6686\n\nMember:\nPachara Towattanakit <somphont@ais.co.th> : 6586\nPatcharaporn Uadglar <patchaud@ais.co.th> : 6586\nAnucha Santana <anuchasa@ais.co.th> : 6707\nThanawan Katecha <thanawkt@ais.co.th> : 6027\nPiya Wongharichao <piyawong@ais.co.th>'))
+        return 0     
     
     if event.message.text == "mdcdr801":
         status = checknode()
@@ -159,6 +176,36 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
+    
+    if event.message.text == "contacts":
+        buttons_template = TemplateSendMessage(
+            alt_text='contacts template',
+            template=ButtonsTemplate(
+                title='เลือกประเภทของเรื่องที่ต้องการติดต่อ',
+                text='โปรดเลือก',
+                thumbnail_image_url='https://i.imgur.com/xQF5dZT.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='Voice/Data/Rated-CDR',
+                        text='main_cdr'
+                    ),
+                    MessageTemplateAction(
+                        label='BOS/INS/AVATAR',
+                        text='online_bill'
+                    ),
+                    MessageTemplateAction(
+                        label='HCS/CDR Search',
+                        text='hcs_cdr'
+                    ),
+                    MessageTemplateAction(
+                        label='อื่นๆ',
+                        text='another'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, buttons_template)
+        return 0 
     
 if __name__ == '__main__':
     app.run()
