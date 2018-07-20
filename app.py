@@ -116,35 +116,11 @@ def handle_message(event):
         return 0
     
     if event.message.text == "mdcdr801":
-        content = checknode()
-        status = content[0]
+        status = checknode()
+        content = status[0]
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=status)
-        return 0
-    
-    if event.message.text == "mdcdr801":
-        content = checknode()
-        status = content[1]
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=status)
-        return 0
-    
-    if event.message.text == "mdcdr801":
-        content = checknode()
-        status = content[2]
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=status)
-        return 0
-    
-    if event.message.text == "mdcdr801":
-        content = checknode()
-        status = content[3]
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=status)
+            TextSendMessage(text=content)
         return 0
     
     if event.message.text == "เช็คสถานะเซิฟเวอร์":
