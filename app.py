@@ -168,7 +168,7 @@ def handle_message(event):
                         text='mdcdr803'
                     ),
                     MessageTemplateAction(
-                        label='MDCDR804',
+                        label='MDCDR805',
                         text='mdcdr804'
                     )
                 ]
